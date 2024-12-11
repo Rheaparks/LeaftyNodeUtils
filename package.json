@@ -1,0 +1,11 @@
+{
+  "name": "leafty-node-utils",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "keywords": [],
+  "author": "Clément Cardonnel (Leafty)",
+  "license": "ISC",
+  "description": "A collection of useful Node.js utilities"
+}
