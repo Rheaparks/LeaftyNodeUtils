@@ -1,4 +1,4 @@
-export default class AWSResponse {
+export class AWSResponse {
     static success(responseObject) {
         return {
             isBase64Encoded: false,
