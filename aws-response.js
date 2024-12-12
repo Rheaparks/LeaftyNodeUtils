@@ -31,4 +31,19 @@ export default class AWSResponse {
             })
         };
     }
+
+    /**
+     * 500 Internal Server Error
+     */
+    static internalServerError(message) {
+        return {
+            isBase64Encoded: false,
+            statusCode: 500,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                code: "INTERNAL_SERVER_ERROR",
+                message: message
+            })
+        };
+    }
 }
