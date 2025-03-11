@@ -53,4 +53,19 @@ export class AWSResponse {
             })
         };
     }
+
+    /**
+     * 302 Redirect
+     */
+    static redirect(location) {
+        return {
+            isBase64Encoded: false,
+            statusCode: 302,
+            headers: {
+                ...headers,
+                "Location": location
+            },
+            body: ""
+        };
+    }
 }
