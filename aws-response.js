@@ -1,9 +1,16 @@
+const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "https://web.leafty.app",
+    "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
+
 export class AWSResponse {
     static success(responseObject) {
         return {
             isBase64Encoded: false,
             statusCode: 200,
-            headers: { "Content-Type": "application/json" },
+            headers: headers,
             body: JSON.stringify(responseObject)
         };
     }
@@ -12,7 +19,7 @@ export class AWSResponse {
         return {
             isBase64Encoded: false,
             statusCode: httpStatusCode,
-            headers: { "Content-Type": "application/json" },
+            headers: headers,
             body: JSON.stringify(errorObject)
         };
     }
@@ -24,7 +31,7 @@ export class AWSResponse {
         return {
             isBase64Encoded: false,
             statusCode: 400,
-            headers: { "Content-Type": "application/json" },
+            headers: headers,
             body: JSON.stringify({
                 code: "BAD_REQUEST",
                 message: message
@@ -39,7 +46,7 @@ export class AWSResponse {
         return {
             isBase64Encoded: false,
             statusCode: 500,
-            headers: { "Content-Type": "application/json" },
+            headers: headers,
             body: JSON.stringify({
                 code: "INTERNAL_SERVER_ERROR",
                 message: message
