@@ -1,6 +1,6 @@
 import { allowedOrigin } from "./allowed-origin.js";
 
-export const headerOptions = (event, cacheMaxAge) => {
+export const headerOptionsForEvent = (event, cacheMaxAge) => {
     const origin = allowedOrigin(event);
     return {
         origin: origin,
