@@ -36,11 +36,11 @@ export class AWSResponse {
     /**
      * 400 Bad Request error
     */
-    static badRequest(message, event, cacheControl) {
+    static badRequest(message, event) {
         return {
             isBase64Encoded: false,
             statusCode: 400,
-            headers: headersWithOptions(event, cacheControl),
+            headers: headersWithOptions(event, "public, max-age=60, must-revalidate"),
             body: JSON.stringify({
                 code: "BAD_REQUEST",
                 message: message
@@ -51,11 +51,11 @@ export class AWSResponse {
     /**
      * 500 Internal Server Error
      */
-    static internalServerError(message, event, cacheControl) {
+    static internalServerError(message, event) {
         return {
             isBase64Encoded: false,
             statusCode: 500,
-            headers: headersWithOptions(event, cacheControl),
+            headers: headersWithOptions(event, "no-store"),
             body: JSON.stringify({
                 code: "INTERNAL_SERVER_ERROR",
                 message: message
