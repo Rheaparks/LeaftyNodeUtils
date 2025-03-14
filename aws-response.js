@@ -64,14 +64,14 @@ export class AWSResponse {
     }
 
     /**
-     * 302 Redirect
+     * 301 Redirect (Moved Permanently)
      */
-    static redirect(location, event, cacheControl) {
+    static redirect(location, event) {
         return {
             isBase64Encoded: false,
-            statusCode: 302,
+            statusCode: 301,
             headers: {
-                ...headersWithOptions(event, cacheControl),
+                ...headersWithOptions(event, "public, max-age=31536000, immutable"),
                 "Location": location
             },
             body: ""
