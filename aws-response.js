@@ -1,11 +1,17 @@
-const headersWithOptions = (headerOptions) => {
-    return {
+import { allowedOrigin } from "./allowed-origin.js";
+
+const headersWithOptions = (event, cacheControl) => {
+    const origin = allowedOrigin(event);
+    const headers = {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": headerOptions.origin,
+        "Access-Control-Allow-Origin": origin,
         "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Cache-Control": `public max-age=${headerOptions.cacheMaxAge} immutable`
     };
+    if (cacheControl != null) {
+        headers["Cache-Control"] = cacheControl;
+    }
+    return headers;
 };
 
 export class AWSResponse {
