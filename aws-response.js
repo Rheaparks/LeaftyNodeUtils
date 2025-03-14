@@ -15,20 +15,20 @@ const headersWithOptions = (event, cacheControl) => {
 };
 
 export class AWSResponse {
-    static success(responseObject, headerOptions) {
+    static success(responseObject, event, cacheControl) {
         return {
             isBase64Encoded: false,
             statusCode: 200,
-            headers: headersWithOptions(headerOptions),
+            headers: headersWithOptions(event, cacheControl),
             body: JSON.stringify(responseObject)
         };
     }
 
-    static failure(httpStatusCode, errorObject, headerOptions) {
+    static failure(httpStatusCode, errorObject, event, cacheControl) {
         return {
             isBase64Encoded: false,
             statusCode: httpStatusCode,
-            headers: headersWithOptions(headerOptions),
+            headers: headersWithOptions(event, cacheControl),
             body: JSON.stringify(errorObject)
         };
     }
@@ -36,11 +36,11 @@ export class AWSResponse {
     /**
      * 400 Bad Request error
     */
-    static badRequest(message, headerOptions) {
+    static badRequest(message, event, cacheControl) {
         return {
             isBase64Encoded: false,
             statusCode: 400,
-            headers: headersWithOptions(headerOptions),
+            headers: headersWithOptions(event, cacheControl),
             body: JSON.stringify({
                 code: "BAD_REQUEST",
                 message: message
@@ -51,11 +51,11 @@ export class AWSResponse {
     /**
      * 500 Internal Server Error
      */
-    static internalServerError(message, headerOptions) {
+    static internalServerError(message, event, cacheControl) {
         return {
             isBase64Encoded: false,
             statusCode: 500,
-            headers: headersWithOptions(headerOptions),
+            headers: headersWithOptions(event, cacheControl),
             body: JSON.stringify({
                 code: "INTERNAL_SERVER_ERROR",
                 message: message
@@ -66,12 +66,12 @@ export class AWSResponse {
     /**
      * 302 Redirect
      */
-    static redirect(location, headerOptions) {
+    static redirect(location, event, cacheControl) {
         return {
             isBase64Encoded: false,
             statusCode: 302,
             headers: {
-                ...headersWithOptions(headerOptions),
+                ...headersWithOptions(event, cacheControl),
                 "Location": location
             },
             body: ""
