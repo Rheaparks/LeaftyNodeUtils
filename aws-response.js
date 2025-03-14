@@ -1,6 +1,6 @@
 const headers = {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "https://web.leafty.app",
+    "Access-Control-Allow-Origin": "https://web.leafty.app,https://www.leafty.app",
     "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
     "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
