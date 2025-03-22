@@ -6,7 +6,7 @@ const headersWithOptions = (event, cacheControl) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": origin,
         "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
     };
     if (cacheControl != null) {
         headers["Cache-Control"] = cacheControl;
@@ -72,7 +72,8 @@ export class AWSResponse {
             statusCode: 301,
             headers: {
                 ...headersWithOptions(event, "public, max-age=31536000, immutable"),
-                "Location": location
+                "Location": location,
+                "Access-Control-Expose-Headers": "Location"
             },
             body: ""
         };
