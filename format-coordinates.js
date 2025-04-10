@@ -10,15 +10,15 @@ export function formatCoordinates(coordinates) {
     if (typeof coordinates === 'object' && coordinates.type === 'Point' && 'coordinates' in coordinates) {
         const coordinateArray = coordinates.coordinates;
         return {
-            lat: coordinateArray[1],
-            lon: coordinateArray[0]
+            lat: coordinateArray[0],
+            lon: coordinateArray[1]
         };
     }
 
     if (Array.isArray(coordinates) && coordinates.length === 2) {
         return {
-            lat: coordinates[1],
-            lon: coordinates[0]
+            lat: coordinates[0],
+            lon: coordinates[1]
         };
     } else if ('x' in coordinates && 'y' in coordinates) {
         return {
