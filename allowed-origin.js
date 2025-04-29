@@ -1,5 +1,5 @@
 export const allowedOrigin = (event) => {
-    const allowedOrigins = ["https://web.leafty.app", "https://www.leafty.app"];
+    const allowedOrigins = ["https://web.leafty.app", "https://www.leafty.app", "https://staging.leafty.app"];
 
     if (event == null) {
         return allowedOrigins[0];
